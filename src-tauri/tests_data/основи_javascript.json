@@ -1,0 +1,26 @@
+{
+	"id": "507f1f77bcf86cd799439011",
+	"questions": [
+		{
+			"correctAnswerIndex": [2],
+			"options": ["=", "==", "===", "!="],
+			"questionText": "Який оператор використовується для суворої рівності?"
+		},
+		{
+			"correctAnswerIndex": [2],
+			"options": ["var", "let", "const", "static"],
+			"questionText": "Як оголосити змінну, яку не можна переприсвоїти?"
+		},
+		{
+			"correctAnswerIndex": 1,
+			"options": ["array", "object", "null", "undefined"],
+			"questionText": "Що виведе console.log(typeof [])?"
+		},
+		{
+			"correctAnswerIndex": [0],
+			"options": ["50", "75"],
+			"questionText": "Скільки коштує багет"
+		}
+	],
+	"title": "Основи JavaScript"
+}

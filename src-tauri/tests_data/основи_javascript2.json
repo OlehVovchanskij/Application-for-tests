@@ -1,0 +1,42 @@
+{
+  "id": "123e4567e89b12d3a456426614174000",
+  "questions": [
+    {
+      "correctAnswerIndex": [
+        1
+      ],
+      "options": [
+        "=",
+        "==",
+        "===",
+        "!="
+      ],
+      "questionText": "Який оператор використовується для суворої рівності"
+    },
+    {
+      "correctAnswerIndex": [
+        2
+      ],
+      "options": [
+        "var",
+        "let",
+        "const",
+        "static"
+      ],
+      "questionText": "Як оголосити змінну, яку не можна переприсвоїти?"
+    },
+    {
+      "correctAnswerIndex": [
+        1
+      ],
+      "options": [
+        "array",
+        "object",
+        "null",
+        "undefined"
+      ],
+      "questionText": "Що виведе console.log(typeof [])?"
+    }
+  ],
+  "title": "Основи JavaScript2"
+}

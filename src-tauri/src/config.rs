@@ -20,7 +20,7 @@ impl Default for AppConfig {
 
 /// Save config to given directory (dir must be a directory path)
 pub fn save_config_to_dir( config: &AppConfig) -> Result<(), String> {
-    let mut path = PathBuf::from("./app.config.json");
+    let mut path = PathBuf::from("./appConfig");
     // ensure dir exists
     if !path.exists() {
         std::fs::create_dir_all(&path).map_err(|e| e.to_string())?;
@@ -33,7 +33,7 @@ pub fn save_config_to_dir( config: &AppConfig) -> Result<(), String> {
 
 /// Load config from given directory (returns Err if no config)
 pub fn load_config_from_dir() -> Result<AppConfig, String> {
-    let mut path = PathBuf::from("./app.config.json");
+    let mut path = PathBuf::from("./appConfig");
     path.push("tests_app_config.json");
 
     if !path.exists() {

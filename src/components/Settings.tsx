@@ -1,6 +1,7 @@
 import { open } from '@tauri-apps/plugin-dialog'
 import { useState } from 'react'
 import { useConfig } from '../store/useConfig'
+import Button from './ui/Button'
 import { GoBack } from './ui/GoBack'
 
 export default function Settings() {
@@ -16,11 +17,9 @@ export default function Settings() {
 		// }
 		try {
 			const folder = await open({ directory: true })
-			console.log('Selected folder:', folder)
+
 			if (folder) setTestsPath(folder as string)
-		} catch (err) {
-			console.error('Dialog error:', err)
-		}
+		} catch (err) {}
 	}
 
 	const pickResultsFolder = async () => {
@@ -30,11 +29,7 @@ export default function Settings() {
 
 	const save = async () => {
 		await updateConfig({ tests_path: testsPath, results_path: resultsPath })
-		console.log('Config saved:', {
-			tests_path: testsPath,
-			results_path: resultsPath,
-			config,
-		})
+
 		setSaved(true)
 		setTimeout(() => setSaved(false), 2000)
 	}
@@ -58,7 +53,7 @@ export default function Settings() {
 				</div>
 			</div>
 
-			<div style={{ marginTop: 20 }}>
+			<div className='border rounded-2xl p-4 mt-5'>
 				<label>Папка результатів:</label>
 				<div style={{ display: 'flex', gap: 10 }}>
 					<input
@@ -66,13 +61,17 @@ export default function Settings() {
 						onChange={e => setResultsPath(e.target.value)}
 						style={{ width: '300px' }}
 					/>
-					<button onClick={pickResultsFolder}>Обрати</button>
+					<button className='cursor-pointer' onClick={pickResultsFolder}>
+						Обрати
+					</button>
 				</div>
 			</div>
 
-			<button onClick={save} style={{ marginTop: 30 }}>
-				Зберегти
-			</button>
+			<Button
+				text='Зберегти'
+				onClick={save}
+				className='px-10 py-3 text-lg mt-5'
+			/>
 
 			{saved && <p style={{ color: 'green' }}>Збережено!</p>}
 		</div>

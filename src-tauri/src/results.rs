@@ -6,6 +6,7 @@ use std::path::PathBuf;
 pub struct TestResult {
     pub student_id: String,
     pub student_name: String,
+    pub student_group: String,
     pub score: u32,
     pub answers: serde_json::Value,
     pub timestamp: String,

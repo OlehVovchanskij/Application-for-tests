@@ -15,7 +15,7 @@ export const useConfig = create<ConfigState>(set => ({
 	load: async () => {
 		try {
 			const cfg = await loadConfig()
-			console.log('Config loaded:', cfg)
+
 			set({ config: cfg, loading: false })
 		} catch {
 			set({ config: null, loading: false })

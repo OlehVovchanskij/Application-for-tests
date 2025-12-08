@@ -1,5 +1,5 @@
 import { Settings } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { RoutesConfig } from '../../config/PagesConfig'
 import Button from '../ui/Button'
@@ -8,9 +8,7 @@ import ChooseTestModal from './ChooseTestModal'
 function Welcome() {
 	const navigate = useNavigate()
 	const [isOpenModal, setIsOpenModal] = useState(false)
-	useEffect(() => {
-		console.log('isOpenModal changed:', isOpenModal)
-	}, [isOpenModal])
+
 	const handleSetting = () => {
 		navigate(RoutesConfig.SETTINGS)
 	}

@@ -22,9 +22,8 @@ export interface QuestionType {
  */
 export async function readTestsFromFolder(folder: string): Promise<TestFile[]> {
 	// викликаємо Rust команду load_tests
-	console.log('Loaded tests from folder:', folder)
+
 	const raw = await invoke<[string, any][]>('load_tests', { folder })
-	console.log('Loaded tests:', raw)
 
 	// конвертуємо в масив TestFile
 	return raw.map(([name, content]) => ({ name, content }))

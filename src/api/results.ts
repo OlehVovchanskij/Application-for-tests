@@ -2,9 +2,10 @@ import { invoke } from '@tauri-apps/api/core'
 
 export interface TestResult {
 	student_id: string
-	student_name: string
+	student_name: string | null
+	student_group: string | null
 	score: number
-	answers: number[]
+	answers: number[][]
 	timestamp: Date
 }
 export async function saveTestResult(

@@ -3,6 +3,7 @@ import { Dispatch, SetStateAction } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { TestType } from '../../api/tests'
 import { RoutesConfig } from '../../config/PagesConfig'
+import { useConfig } from '../../store/useConfig'
 import { useTest } from '../../store/useTest'
 import Button from '../ui/Button'
 
@@ -13,12 +14,15 @@ function ChooseTestModal({
 }) {
 	const navigate = useNavigate()
 
-	const { tests } = useTest()
-
+	const { tests, deleteTest } = useTest()
+	const { config } = useConfig()
 	const onSelectTest = (test: TestType) => {
 		navigate(RoutesConfig.TEST(test.id))
 	}
-
+	const handleDeleteTest = (test: TestType) => {
+		if (!config) return
+		deleteTest(config?.tests_path, config?.results_path, test.id)
+	}
 	return (
 		<div className='fixed inset-0 flex items-center  justify-center bg-black/60 backdrop-blur-sm animate-fade-in'>
 			<div className='bg-zinc-900 max-h-[80%] p-6 w-11/12 max-w-2xl rounded-2xl relative shadow-xl animate-scale-in'>
@@ -51,9 +55,15 @@ function ChooseTestModal({
 								/>
 								<Button
 									onClick={() => {
-										navigate(RoutesConfig.TEST_RESULTS(test.content.title))
+										navigate(RoutesConfig.TEST_RESULTS(test.content.id))
 									}}
 									text='Переглянути результати'
+									className='w-full py-2 '
+								/>
+								<Button
+									onClick={() => handleDeleteTest(test.content)}
+									colorType='delete'
+									text='Видалити'
 									className='w-full py-2 '
 								/>
 							</div>

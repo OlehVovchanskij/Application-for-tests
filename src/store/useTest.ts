@@ -1,5 +1,6 @@
 import { create } from 'zustand'
 import {
+	deleteTestAndResults,
 	readTestsFromFolder,
 	saveTest,
 	TestFile,
@@ -23,9 +24,14 @@ interface TestState {
 		newFilename: string,
 		testData: TestType
 	) => Promise<void>
+	deleteTest: (
+		testsFolder: string,
+		resultsFolder: string,
+		testFilename: string
+	) => Promise<void>
 }
 
-export const useTest = create<TestState>(set => ({
+export const useTest = create<TestState>((set, get) => ({
 	tests: null,
 	loading: false,
 	loadTests: async path => {
@@ -50,4 +56,12 @@ export const useTest = create<TestState>(set => ({
 		await updateTest(folder, oldFilename, newFilename, testData)
 	},
 	updateTestList: tests => set({ tests }),
+	deleteTest: async (
+		testsFolder: string,
+		resultsFolder: string,
+		testFilename: string
+	) => {
+		await deleteTestAndResults(testsFolder, resultsFolder, testFilename)
+		get().loadTests(testsFolder)
+	},
 }))

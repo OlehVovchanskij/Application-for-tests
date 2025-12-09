@@ -64,3 +64,20 @@ pub fn update_test(folder: &str, old_filename: &str, new_filename: &str, test_da
 
     save_test(folder, new_filename, test_data)
 }
+pub fn delete_test_and_results(tests_folder: &str, results_folder: &str, test_filename: &str) -> Result<(), String> {
+    let mut test_path = PathBuf::from(tests_folder).join(test_filename);
+    if test_path.extension().is_none() {
+        test_path.set_extension("json");
+    }
+
+    if test_path.exists() {
+        fs::remove_file(&test_path).map_err(|e| e.to_string())?;
+    }
+
+    let results_path = PathBuf::from(results_folder).join(test_filename);
+    if results_path.exists() && results_path.is_dir() {
+        fs::remove_dir_all(&results_path).map_err(|e| e.to_string())?;
+    }
+
+    Ok(())
+}

@@ -9,6 +9,7 @@ export const TestResults = () => {
 	const [results, setResults] = useState<TestResult[]>([])
 	const { config } = useConfig()
 	useEffect(() => {
+		console.log('Fetching results for testId:', params.testId)
 		async function fetchResults() {
 			if (config?.results_path && params.testId) {
 				const res = await loadTestResults(params.testId, config.results_path)

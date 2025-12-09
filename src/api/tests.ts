@@ -53,3 +53,14 @@ export async function updateTest(
 		testData,
 	})
 }
+export async function deleteTestAndResults(
+	testsFolder: string,
+	resultsFolder: string,
+	testFilename: string
+): Promise<void> {
+	await invoke('delete_test', {
+		testsFolder,
+		resultsFolder,
+		testFilename,
+	})
+}

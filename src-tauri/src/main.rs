@@ -47,6 +47,10 @@ fn save_test(folder: String, filename: String, test_data: serde_json::Value) -> 
 fn update_test(folder: String, old_filename: String, new_filename: String, test_data: serde_json::Value) -> Result<(), String> {
     crate::tests::update_test(&folder, &old_filename, &new_filename, &test_data)
 }
+#[tauri::command]
+fn delete_test(tests_folder: String, results_folder: String, test_filename: String) -> Result<(), String> {
+    crate::tests::delete_test_and_results(&tests_folder, &results_folder, &test_filename)
+}
 
 fn main() {
     tauri::Builder::default()
@@ -56,6 +60,7 @@ fn main() {
             save_config,
             load_config,
             load_tests,
+            delete_test,
             save_result,
             load_results,
             save_test,

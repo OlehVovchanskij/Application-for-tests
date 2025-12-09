@@ -57,7 +57,7 @@ export const TestEditorForm: FC<TestEditorFormProps> = ({
 			<Button
 				onClick={() => {
 					handleSave(testFile)
-				}} // ✅ передаємо testFile
+				}}
 				className='mt-4 py-2 px-4'
 				text='Зберегти тест'
 			/>
@@ -65,7 +65,6 @@ export const TestEditorForm: FC<TestEditorFormProps> = ({
 			{activeQuestion && activeQuestionIndex !== null && (
 				<QuestionEditor
 					key={activeQuestionIndex}
-					index={activeQuestionIndex}
 					question={activeQuestion}
 					onUpdate={updateActiveQuestion}
 				/>

@@ -9,16 +9,16 @@ import { OptionRow } from './OptionRow'
 
 interface QuestionEditorProps {
 	question: QuestionType
-	index: number
+
 	onUpdate: (updated: QuestionType) => void
 }
 
 export const QuestionEditor: FC<QuestionEditorProps> = ({
 	question,
-	index,
+
 	onUpdate,
 }) => {
-	const { setIsSaved, isSaved } = useTestFormStore()
+	const { setIsSaved } = useTestFormStore()
 	const toggleCorrectAnswer = (optIndex: number) => {
 		const exists = question.correctAnswerIndex.includes(optIndex)
 		const updatedIndexes = exists
@@ -60,19 +60,19 @@ export const QuestionEditor: FC<QuestionEditorProps> = ({
 	}
 	return (
 		<div className='mt-6'>
-			<h3 className='text-xl font-semibold mb-2'>
-				Питання {question.questionText}:
-			</h3>
-			<Field
-				className='border-white/40 rounded-xl border p-2 mb-4 w-full'
-				value={question.questionText}
-				onChange={e =>
-					onUpdate({
-						...question,
-						questionText: e.target.value,
-					})
-				}
-			/>
+			<div className='flex items-center mb-4'>
+				<h3 className='text-xl font-semibold mr-2'>Питання:</h3>
+				<Field
+					className='border-white/40 rounded-xl border p-2  w-full'
+					value={question.questionText}
+					onChange={e =>
+						onUpdate({
+							...question,
+							questionText: e.target.value,
+						})
+					}
+				/>
+			</div>
 			<ul className='list-disc list-inside'>
 				{question.options.map((option, idx) => (
 					<OptionRow

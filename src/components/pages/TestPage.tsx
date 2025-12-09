@@ -28,7 +28,7 @@ export const TestPage: React.FC = () => {
 
 	useEffect(() => {
 		if (session.status === 'finished' && config?.results_path && testFile) {
-			saveTestResult(config.results_path, testFile.title.trim(), {
+			saveTestResult(config.results_path, testFile.id, {
 				student_id: `${session.student.name.trim()}_${session.student.group.trim()}`,
 				student_name: session.student.name.trim(),
 				student_group: session.student.group.trim(),

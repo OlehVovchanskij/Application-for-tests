@@ -14,12 +14,11 @@
 	"app": {
 		"windows": [
 			{
-				"title": "DMTFC Tests App",
+				"title": "ДМТФК Тести",
 				"width": 800,
 				"height": 600
 			}
 		],
-
 		"security": {
 			"csp": null
 		}
@@ -27,6 +26,12 @@
 	"bundle": {
 		"active": true,
 		"targets": "all",
-		"icon": ["/icons/logo.png"]
+		"icon": [
+			"icons/32x32.png",
+			"icons/128x128.png",
+			"icons/128x128@2x.png",
+			"icons/icon.icns",
+			"icons/icon.ico"
+		]
 	}
 }

@@ -14,7 +14,7 @@
 	"app": {
 		"windows": [
 			{
-				"title": "ДМТФК Тести",
+				"title": "tests-app-dmtfc",
 				"width": 800,
 				"height": 600
 			}
